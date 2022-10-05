@@ -4,8 +4,7 @@ services:
     image: mysql:8
     ports:
       - "3306:3306"
-    volumes:
-        - ./schema.sql:/docker-entrypoint-initdb.d/1-init.sql
+
     environment:
         MYSQL_DATABASE: shop
         MYSQL_USER: user
