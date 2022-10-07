@@ -52,10 +52,6 @@ public void paymentСhoice(){
                 .sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE, Keys.BACK_SPACE);
     }
 
-    public void clearFieldd(SelenideElement field) {
-        field.sendKeys(Keys.CONTROL + "A");
-        field.sendKeys(Keys.BACK_SPACE);
-    }
 
     public void successMessage() {
         $$(".notification").first().shouldBe(visible, Duration.ofSeconds(20)).shouldHave(text("Операция одобрена Банком.")).$(".notification__closer").click();

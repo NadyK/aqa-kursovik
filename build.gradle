@@ -45,4 +45,7 @@ test {
     useJUnitPlatform()
     // в тестах, вызывая `gradlew test -Dselenide.headless=true` будем передавать этот параметр в JVM (где его подтянет Selenide)
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://185.119.57.9:3306/shop')
+    systemProperty 'db.user', System.getProperty('db.user', 'user')
+    systemProperty 'db.password', System.getProperty('db.password', 'password')
 }
