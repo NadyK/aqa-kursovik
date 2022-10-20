@@ -7,13 +7,10 @@
 * Обычная оплата по дебетовой карте
 * Уникальная технология: выдача кредита по данным банковской карты
 
-В ходе выполнения проекта была создана следующая документация:
-1. План автоматизации https://github.com/NadyK/aqa-kursovik/blob/main/Plan.md
-2. Отчет по итогам тестирования
-3. Отчет по итогам автоматизации https://github.com/NadyK/aqa-kursovik/blob/main/Summary.md
-
-
-
+### В ходе выполнения проекта была создана следующая документация:
+1. [План автоматизации](https://github.com/NadyK/aqa-kursovik/blob/main/Plan.md)
+2. [Отчет по итогам тестирования](https://github.com/NadyK/aqa-kursovik/blob/main/Report.md)
+3. [Отчет по итогам автоматизации](https://github.com/NadyK/aqa-kursovik/blob/main/Summary.md)
 
 ### Запуск SUT, авто-тестов и генерация отчетов.
 1. Открыть проект в IntelliJ IDEA Ultimate;
