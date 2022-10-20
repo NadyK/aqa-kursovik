@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.page.InputCardDetails;
+import ru.netology.web.page.PaymentСhoice;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -20,120 +21,133 @@ public class UITest {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:8080");
     }
+
     @BeforeEach
-    public void cleanForm() {
+    public void paymentСhoiceAndCleanForm() {
+        var paymentСhoice = new PaymentСhoice();
+        paymentСhoice.cardPayment();
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.paymentСhoice();
         inputCardDetails.clearFields();
     }
-    //public void cleanBase() {
-        //DatabaseHelper.clearDB();}
 
     @AfterAll
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+
     @Test
-    void shouldApprovedCard() {
+    void shouldInputApprovedCard() {
+
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCard());
-        inputCardDetails.successMessage();
-    }
-    @Test
-    void shouldDeclinedCard() {
-        var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getDeclinedCard());
-        inputCardDetails.errorMessage();
-    }
-    @Test
-    void shouldAnotherCard() {
-        var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getAnotherCard());
-        inputCardDetails.errorMessage();
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCard());
+        inputCardDetails.successMessageVisible();
+        inputCardDetails.errorMessageNotVisible();
     }
 
     @Test
-    void shouldInvalidCardEmpty() {
+    void shouldInputDeclinedCard() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getInvalidCardNumberEmpty());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getDeclinedCard());
+        inputCardDetails.errorMessageVisible();
+        inputCardDetails.successMessageNotVisible();
+    }
+
+    @Test
+    void shouldInputAnotherCard() {
+        var inputCardDetails = new InputCardDetails();
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getAnotherCard());
+        inputCardDetails.errorMessageVisible();
+        inputCardDetails.successMessageNotVisible();
+    }
+
+    @Test
+    void shouldInputInvalidCardEmptyFields() {
+        var inputCardDetails = new InputCardDetails();
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getInvalidCardNumberEmpty());
         inputCardDetails.errorMessageCardNumberEmpty();
     }
 
     @Test
-    void shouldInvalidCardNumber() {
+    void shouldInputInvalidCardNumber() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getInvalidCardNumber());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getInvalidCardNumber());
         inputCardDetails.errorMessageInvalidCardNumber();
     }
 
     @Test
-    void shouldInvalidMonth00() {
+    void shouldInputInvalidMonth00() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidMonth00());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidMonth00());
         inputCardDetails.errorMessageInvalidMonth();
     }
 
     @Test
-    void shouldInvalidMonth13() {
+    void shouldInputInvalidMonth13() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidMonth13());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidMonth13());
         inputCardDetails.errorMessageInvalidMonth();
     }
 
     @Test
-    void shouldInvalidMonthEmpty() {
+    void shouldInputInvalidMonthEmptyField() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidMonthEmpty());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidMonthEmpty());
         inputCardDetails.errorMessageInvalidMonthEmpty();
     }
 
     @Test
-    void shouldInvalidMonth1Symbol() {
+    void shouldInputInvalidMonth1Symbol() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidMonth1Symbol());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidMonth1Symbol());
         inputCardDetails.errorMessageInvalidMonth1Symbol();
     }
 
     @Test
-    void shouldInvalidLastYear() {
+    void shouldInputInvalidLastYear() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidLastYear());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidLastYear());
         inputCardDetails.errorMessageInvalidLastYear();
     }
+
     @Test
-    void shouldInvalidOwnerRu() {
+    void shouldInputInvalidOwnerRu() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidOwnerRu());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidOwnerRu());
         inputCardDetails.errorMessageInvalidOwner();
     }
+
     @Test
-    void shouldInvalidOwnerSpcSymbolNmb() {
+    void shouldInputInvalidOwnerSpcSymbolNmb() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidOwnerSpcSymbolNmb());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidOwnerSpcSymbolNmb());
         inputCardDetails.errorMessageInvalidOwner();
     }
+
     @Test
-    void shouldInvalidOwnerEmpty() {
+    void shouldInputInvalidOwnerEmptyField() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidOwnerSpcEmpty());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidOwnerSpcEmpty());
         inputCardDetails.errorMessageInvalidOwnerEmpty();
     }
+
     @Test
-    void shouldInvalidCVC1Symbol() {
+    void shouldInputInvalidCVC1Symbol() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidCVC1Symbol());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidCVC1Symbol());
         inputCardDetails.errorMessageInvalidCVC();
     }
+
     @Test
-    void shouldInvalidCVCSpcSymbolLetter() {
+    void shouldInputInvalidCVCSpcSymbolLetter() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidCVCSpcSymbolLetter());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidCVCSpcSymbolLetter());
         inputCardDetails.errorMessageInvalidCVC();
     }
+
     @Test
-    void shouldInvalidCVCEmpty() {
+    void shouldInputInvalidCVCEmptyField() {
         var inputCardDetails = new InputCardDetails();
-        inputCardDetails.card(DataHelper.CardDetails.getApprovedCardInvalidCVCEmpty());
+        inputCardDetails.fillingInFields(DataHelper.CardDetails.getApprovedCardInvalidCVCEmpty());
         inputCardDetails.errorMessageInvalidCVCEmpty();
     }
 }
