@@ -10,7 +10,7 @@
 В ходе выполнения проекта была создана следующая документация:
 1. План автоматизации https://github.com/NadyK/aqa-kursovik/blob/main/Plan.md
 2. Отчет по итогам тестирования
-3. Отчет по итогам автоматизации
+3. Отчет по итогам автоматизации https://github.com/NadyK/aqa-kursovik/blob/main/Summary.md
 
 
 
